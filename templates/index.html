@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Malha de Segurança Cidadã</title>
+<link rel="stylesheet" href="/static/malha.css">
+</head>
+<body>
+<h1>Malha de Segurança Cidadã - Trânsito</h1>
+
+<div id="grade">
+{% for c in cameras %}
+  <div class="cam">
+    <p>{{ c[1] }} - {{ c[3] }} (limite {{ c[4] }} km/h)</p>
+    <img src="/video/{{ c[0] }}">
+    <small>{{ c[2] }}</small>
+  </div>
+{% endfor %}
+</div>
+
+<h2>Cadastrar câmera</h2>
+<form action="/api/camera" method="get">
+  <input name="nome" placeholder="nome">
+  <input name="rua" placeholder="rua">
+  <input name="ip" placeholder="ip">
+  <input name="usuario" placeholder="usuario">
+  <input name="senha" placeholder="senha">
+  <input name="limite" placeholder="limite">
+  <button>Salvar</button>
+</form>
+
+<h2>Consultar placa</h2>
+<input id="placa"><button onclick="buscarPlaca()">Buscar</button>
+<div id="eventos"></div>
+
+<p>Veículos contados: <b id="total">0</b></p>
+<button onclick="location.href='/api/limpar'">Limpar tudo</button>
+
+<script src="/static/malha.js"></script>
+</body>
+</html>

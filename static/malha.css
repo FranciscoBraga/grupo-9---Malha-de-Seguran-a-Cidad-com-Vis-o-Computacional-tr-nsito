@@ -1,0 +1,4 @@
+body { background: #111; color: #eee }
+#grade { display: flex }
+.cam img { width: 640px; height: 480px }
+.evento { display: inline-block; border: 1px solid #555; margin: 4px }
